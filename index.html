@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Roblox Join Redirect</title>
+  <script>
+    window.onload = function() {
+      // Get query params
+      const params = new URLSearchParams(window.location.search);
+      const placeId = params.get("placeId");
+      const serverId = params.get("serverId");
+
+      if (placeId && serverId) {
+        // Construct Roblox link
+        const robloxLink = `roblox://placeID=${placeId}&gameInstanceId=${serverId}`;
+
+        // Redirect to Roblox
+        window.location.href = robloxLink;
+
+        // Try closing the page (may only work if user opened via script/button)
+        setTimeout(() => {
+          window.close();
+        }, 1000);
+      } else {
+        document.body.innerHTML = "<h2>Missing placeId or serverId in URL.</h2>";
+      }
+    }
+  </script>
+</head>
+<body>
+  <p>Redirecting to Roblox...</p>
+</body>
+</html>
