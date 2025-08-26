@@ -1,32 +1,48 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html>
+
 <head>
-  <meta charset="UTF-8">
-  <title>Roblox Join Redirect</title>
-  <script>
-    window.onload = function() {
-      const params = new URLSearchParams(window.location.search);
-      const placeId = params.get("placeId");
-      const serverId = params.get("serverId");
+    <style>
+        .outer {
+            background: green;
+            height: 60px;
+            display: block;
+        }
 
-      if (placeId && serverId) {
-        const robloxLink = `roblox://placeID=${placeId}&gameInstanceId=${serverId}`;
-
-        // Redirect to Roblox
-        window.location.href = robloxLink;
-
-        // After 2 seconds, try closing the window
-        setTimeout(() => {
-          window.open('', '_self'); // Some browsers require this hack
-          window.close();
-        }, 2000);
-      } else {
-        document.body.innerHTML = "<h2>Missing placeId or serverId in URL.</h2>";
-      }
-    }
-  </script>
+        .button {
+            margin-left: 93%;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+        }
+    </style>
 </head>
-<body>
-  <p>Launching Roblox…</p>
+
+<body style="text-align:center;">
+    
+    <h1>GeeksForGeeks</h1>
+    
+    <p>
+        Click on the cross to 
+        hide the element.
+    </p>
+    
+    <div class="outer">
+        <div class="button">X</div>
+    </div>
+    <br>
+    
+    <p id="GFG"></p>
+
+    <script>
+        var down = document.getElementById("GFG");
+        var el = document.querySelector('.button');
+        
+        el.addEventListener('click', function () {
+            var el2 = document.querySelector('.outer');
+            el2.style.display = "none";
+        });
+    </script>
 </body>
+
 </html>
