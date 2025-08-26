@@ -7,11 +7,11 @@
     function sleep(ms) {
         return new Promise(resolve => setTimeout(resolve, ms));
     }
+        
     window.onload = function() {
         const params = new URLSearchParams(window.location.search);
         const placeId = params.get("placeId");
         const jobId = params.get("jobId");
-
         if (placeId && jobId) {
             const robloxLink = `roblox://placeID=${placeId}&gameInstanceId=${jobId}`;
             sleep(250);
