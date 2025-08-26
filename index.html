@@ -1,48 +1,27 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
-
 <head>
-    <style>
-        .outer {
-            background: green;
-            height: 60px;
-            display: block;
-        }
-
-        .button {
-            margin-left: 93%;
-            color: white;
-            font-weight: bold;
-            cursor: pointer;
-        }
-    </style>
-</head>
-
-<body style="text-align:center;">
-    
-    <h1>GeeksForGeeks</h1>
-    
-    <p>
-        Click on the cross to 
-        hide the element.
-    </p>
-    
-    <div class="outer">
-        <div class="button">X</div>
-    </div>
-    <br>
-    
-    <p id="GFG"></p>
-
+    <meta charset="UTF-8">
+    <title>Roblox Join Redirect</title>
     <script>
-        var down = document.getElementById("GFG");
-        var el = document.querySelector('.button');
-        
-        el.addEventListener('click', function () {
-            var el2 = document.querySelector('.outer');
-            el2.style.display = "none";
-        });
-    </script>
-</body>
+    window.onload = function() {
+        const params = new URLSearchParams(window.location.search);
+        const placeId = params.get("placeId");
+        const serverId = params.get("serverId");
 
+        if (placeId && serverId) {
+            const robloxLink = `roblox://placeID=${placeId}&gameInstanceId=${serverId}`;
+            window.location.href = robloxLink;
+            setTimeout(() => {
+                window.location.href = `https://www.roblox.com/games/${placeId}`;
+            }, 2000);
+        } else {
+            document.body.innerHTML = "<p>Missing placeId or serverId in URL.</p>";
+        }
+    }
+    </script>
+</head>
+<body>
+    <p>Launching Roblox…</p>
+</body>
 </html>
