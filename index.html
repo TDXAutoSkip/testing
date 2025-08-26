@@ -13,8 +13,8 @@
         const jobId = params.get("jobId");
 
         if (placeId && jobId) {
-            // const robloxLink = `roblox://placeID=${placeId}&gameInstanceId=${jobId}`;
-            // window.location.href = robloxLink;
+            const robloxLink = `roblox://placeID=${placeId}&gameInstanceId=${jobId}`;
+            window.location.href = robloxLink;
             sleep(1000);
             while (true) {
                 console.log(document.visibilityState);
