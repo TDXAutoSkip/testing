@@ -4,19 +4,24 @@
     <meta charset="UTF-8">
     <title>Roblox Join Redirect</title>
     <script>
+    function sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
     window.onload = function() {
         const params = new URLSearchParams(window.location.search);
         const placeId = params.get("placeId");
-        const serverId = params.get("serverId");
+        const jobId = params.get("jobId");
 
-        if (placeId && serverId) {
-            const robloxLink = `roblox://placeID=${placeId}&gameInstanceId=${serverId}`;
+        if (placeId && jobId) {
+            const robloxLink = `roblox://placeID=${placeId}&gameInstanceId=${jobId}`;
+            sleep(250);
             window.location.href = robloxLink;
-            setTimeout(() => {
-                window.location.href = `https://www.roblox.com/games/${placeId}`;
-            }, 2000);
+            sleep(250);
+            document.body.innerHTML = `<p>Redirecting to https://www.roblox.com/games/${placeId}</p>`;
+            sleep(250);
+            window.location.href = `https://www.roblox.com/games/${placeId}`;
         } else {
-            document.body.innerHTML = "<p>Missing placeId or serverId in URL.</p>";
+            document.body.innerHTML = "<p>Missing placeId or jobId in URL.</p>";
         }
     }
     </script>
