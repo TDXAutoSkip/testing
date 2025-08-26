@@ -7,19 +7,21 @@
     function sleep(ms) {
         return new Promise(resolve => setTimeout(resolve, ms));
     }
-        
     window.onload = function() {
         const params = new URLSearchParams(window.location.search);
         const placeId = params.get("placeId");
         const jobId = params.get("jobId");
+
         if (placeId && jobId) {
-            const robloxLink = `roblox://placeID=${placeId}&gameInstanceId=${jobId}`;
-            sleep(250);
-            window.location.href = robloxLink;
-            sleep(250);
-            document.body.innerHTML = `<p>Redirecting to https://www.roblox.com/games/${placeId}</p>`;
-            sleep(250);
-            window.location.href = `https://www.roblox.com/games/${placeId}`;
+            // const robloxLink = `roblox://placeID=${placeId}&gameInstanceId=${jobId}`;
+            // window.location.href = robloxLink;
+            sleep(1000);
+            console.log(document.visibilityState);
+            // window.addEventListener("blur", () => {
+            //     document.body.innerHTML = `<p>Redirecting to https://www.roblox.com/games/${placeId}</p>`;
+            //     sleep(250)
+            //     window.location.href = `https://www.roblox.com/games/${placeId}`;
+            // });
         } else {
             document.body.innerHTML = "<p>Missing placeId or jobId in URL.</p>";
         }
